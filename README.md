@@ -1,8 +1,12 @@
 # 📄 RAG Document Q&A Chatbot
 
-An AI-powered chatbot that lets you **upload PDF documents** and **ask questions** about their content using Retrieval-Augmented Generation (RAG).
+🔗 **[Live Demo](https://rag-document-q-a-chatbot-6uwmejzwlsm7txytargppr.streamlit.app/)**
+
+An AI-powered chatbot that lets you **upload documents (PDF, TXT, DOCX, CSV)** and **ask questions** about their content using Retrieval-Augmented Generation (RAG).
 
 Built with **OpenAI GPT**, **LangChain**, **FAISS**, and **Streamlit**.
+
+Developed by **Yaseen Mahek**
 
 ---
 
@@ -10,7 +14,7 @@ Built with **OpenAI GPT**, **LangChain**, **FAISS**, and **Streamlit**.
 
 | Feature | Description |
 |---------|-------------|
-| 📁 Multi-PDF Upload | Upload and query multiple PDF documents at once |
+| 📁 Multi-Format Upload | Upload and query PDF, TXT, DOCX, and CSV files |
 | 🧠 RAG Pipeline | Intelligent retrieval of relevant document sections |
 | 💬 Streaming Chat | Real-time token-by-token response streaming |
 | 📚 Source References | See exactly which document sections the AI used |
@@ -64,8 +68,8 @@ rag-document-qa-chatbot/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/rag-document-qa-chatbot.git
-   cd rag-document-qa-chatbot
+   git clone https://github.com/Yaseenmahek/RAG-Document-Q-A-Chatbot.git
+   cd RAG-Document-Q-A-Chatbot
    ```
 
 2. **Create a virtual environment:**
