@@ -657,6 +657,36 @@ if prompt := st.chat_input("💬 Ask a question about your documents..."):
                 })
 
 
+# ──────────────────────────────────────────────
+# Export Buttons (in main area — always sees latest messages)
+# ──────────────────────────────────────────────
+if st.session_state.messages:
+    st.markdown("---")
+    st.markdown("##### 📥 Download Chat History")
+    dcol1, dcol2, dcol3 = st.columns([1, 1, 2])
+    with dcol1:
+        json_str = export_chat_to_json(st.session_state.messages)
+        st.download_button(
+            label="📋 Download JSON",
+            data=json_str,
+            file_name="chat_export.json",
+            mime="application/json",
+            use_container_width=True,
+        )
+    with dcol2:
+        try:
+            pdf_bytes = export_chat_to_pdf(st.session_state.messages)
+            st.download_button(
+                label="📄 Download PDF",
+                data=pdf_bytes,
+                file_name="chat_export.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+            )
+        except Exception:
+            st.caption("⚠️ PDF export unavailable")
+
+
 # Footer
 st.markdown(f"""
 <div class="footer">
