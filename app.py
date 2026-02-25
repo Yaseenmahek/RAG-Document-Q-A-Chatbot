@@ -18,6 +18,7 @@ from rag_engine import (
     add_to_vector_store,
     get_streaming_response,
 )
+from export_utils import export_chat_to_json, export_chat_to_pdf
 
 
 # ──────────────────────────────────────────────
@@ -456,6 +457,30 @@ with st.sidebar:
             file_badges += f'<span class="file-badge">{icon} {fname}</span>'
         st.markdown(file_badges, unsafe_allow_html=True)
         
+        st.markdown("---")
+    
+    # Export Chat
+    if st.session_state.messages:
+        st.markdown("##### 📥 Export Chat")
+        ecol1, ecol2 = st.columns(2)
+        with ecol1:
+            pdf_bytes = export_chat_to_pdf(st.session_state.messages)
+            st.download_button(
+                label="📄 PDF",
+                data=pdf_bytes,
+                file_name="chat_export.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+            )
+        with ecol2:
+            json_str = export_chat_to_json(st.session_state.messages)
+            st.download_button(
+                label="📋 JSON",
+                data=json_str,
+                file_name="chat_export.json",
+                mime="application/json",
+                use_container_width=True,
+            )
         st.markdown("---")
     
     # Action Buttons
