@@ -464,14 +464,17 @@ with st.sidebar:
         st.markdown("##### 📥 Export Chat")
         ecol1, ecol2 = st.columns(2)
         with ecol1:
-            pdf_bytes = export_chat_to_pdf(st.session_state.messages)
-            st.download_button(
-                label="📄 PDF",
-                data=pdf_bytes,
-                file_name="chat_export.pdf",
-                mime="application/pdf",
-                use_container_width=True,
-            )
+            try:
+                pdf_bytes = export_chat_to_pdf(st.session_state.messages)
+                st.download_button(
+                    label="📄 PDF",
+                    data=pdf_bytes,
+                    file_name="chat_export.pdf",
+                    mime="application/pdf",
+                    use_container_width=True,
+                )
+            except Exception:
+                st.caption("PDF unavailable")
         with ecol2:
             json_str = export_chat_to_json(st.session_state.messages)
             st.download_button(
